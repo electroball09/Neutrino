@@ -164,6 +164,11 @@ namespace Neutrino.Core
 					lock(readyBuffers)
 						readyBuffers.Add(receivedBuffer);
 				}
+                catch (SocketException ex)
+                {
+                    NeutrinoConfig.LogWarning("Disconnecting peer due to socket exception: " + peersByEndpoint[(IPEndPoint)receivedEndPoint].ToString());
+                    peersByEndpoint[(IPEndPoint)receivedEndPoint].Disconnect();
+                }
 				catch (Exception ex)
 				{
 					NeutrinoConfig.LogError("Error handling message: " + ex);
