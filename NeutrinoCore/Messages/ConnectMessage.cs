@@ -5,10 +5,7 @@ namespace Neutrino.Core.Messages
 {
 	public class ConnectMessage : NetworkMessage
 	{
-		public ConnectMessage() : base()
-		{
-			IsGuaranteed = true;
-		}
+        public override bool IsGuaranteed => true;
 
 		[MessagePackMember(0)]
 		public string Nickname { get; set; }

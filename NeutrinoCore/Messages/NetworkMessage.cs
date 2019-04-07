@@ -15,7 +15,8 @@ namespace Neutrino.Core.Messages
 		}
 
 		public byte Id { get; set; }
-		public bool IsGuaranteed { get; set; }
+		//public bool IsGuaranteed { get; set; }
+        public virtual bool IsGuaranteed { get { return false; } }
 		public NetworkPeer Source { get; set; }
 		public ushort SequenceNumber { get; set; }
 
@@ -39,7 +40,6 @@ namespace Neutrino.Core.Messages
 			MsgPackSerializer.DeserializeObject(result, cloneBuffer, 0);
 			result.SequenceNumber = SequenceNumber;
 			result.Source = Source;
-			result.IsGuaranteed = IsGuaranteed;
 			result.Id = Id;
 			return result;
 		}

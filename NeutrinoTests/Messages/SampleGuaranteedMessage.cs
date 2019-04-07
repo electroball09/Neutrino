@@ -6,12 +6,9 @@ namespace Neutrino.Tests
 {
 	public class SampleGuaranteedMessage : NetworkMessage
 	{
-		public SampleGuaranteedMessage()
-		{
-			IsGuaranteed = true;
-		}
+        public override bool IsGuaranteed => true;
 
-		[MessagePackMember(0)]
+        [MessagePackMember(0)]
 		public int TheNumber { get; set; }
 
 		public override string ToString()
