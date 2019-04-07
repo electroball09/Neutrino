@@ -12,7 +12,8 @@ namespace Neutrino.Core
 		internal ushort SequenceNumber { get; set; }
 		internal byte[] Payload { get; set; }
 		internal bool NeedsAck { get; set; }
-		internal int PayloadLength { get; set; }
+        public Action<NetworkPeer> OnAckCallback;
+        internal int PayloadLength { get; set; }
 		internal Type ContainedMessageType { get; set; }
 		internal int PreviousSendTicks { get; set; }
 

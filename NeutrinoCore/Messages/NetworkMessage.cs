@@ -15,10 +15,10 @@ namespace Neutrino.Core.Messages
 		}
 
 		public byte Id { get; set; }
-		//public bool IsGuaranteed { get; set; }
         public virtual bool IsGuaranteed { get { return false; } }
 		public NetworkPeer Source { get; set; }
 		public ushort SequenceNumber { get; set; }
+        public Action<NetworkPeer> OnAckCallback;
 
 		public int Write(byte[] buffer)
 		{
