@@ -59,6 +59,11 @@ namespace Neutrino.Core
 			isConnected = false;
 		}
 
+        public T GetMessage<T>() where T : NetworkMessage
+        {
+            return node.GetMessage<T>();
+        }
+
 		public bool IsConnected
 		{
 			get { return isConnected; }
