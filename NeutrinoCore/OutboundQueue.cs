@@ -62,8 +62,8 @@ namespace Neutrino.Core
 				outboundMessages.Remove(outboundMessage);
 				outboundMessagesBySequence.Remove(ackMessage.AckedSequenceNumber);
 				outboundMessagePool.Push(outboundMessage);
-                outboundMessage?.OnAckCallback(ackMessage.Source);
-			}
+                outboundMessage.OnAckCallback?.Invoke(ackMessage.Source);
+            }
 			if (isResetPending && outboundMessages.FirstOrDefault(x => x.NeedsAck) == null)
 			{
 				if (IsVerbose)
