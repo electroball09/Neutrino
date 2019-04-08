@@ -76,6 +76,8 @@ namespace Neutrino.Core
 					if (messages.Count == Byte.MaxValue)
 						throw new ApplicationException("The maximum number of network messages has been reached - you need to use fewer message types in this project");
 					var msg = (NetworkMessage)t.GetConstructor(Type.EmptyTypes).Invoke(Utility.emptyArgs);
+                    MsgPackSerializer.SerializeObject(msg, NetworkMessage.cloneBuffer, 0);
+                    MsgPackSerializer.DeserializeObject(msg, NetworkMessage.cloneBuffer, 0);
 					msg.Id = (byte)messages.Count;
 					messages[msg.Id] = msg;
 					messagesByType[msg.GetType()] = msg;

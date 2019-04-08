@@ -8,7 +8,7 @@ namespace Neutrino.Core.Messages
 	public abstract class NetworkMessage
 	{
 		private static readonly object[] emptyArgs = new object[] {};
-		private static readonly byte[] cloneBuffer = new byte[NeutrinoConfig.MaxMessageSize];
+		internal static readonly byte[] cloneBuffer = new byte[NeutrinoConfig.MaxMessageSize];
 
 		public NetworkMessage()
 		{
